@@ -1,0 +1,19 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "url": "Gateway URL",
+          "token": "Gateway token"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach the gateway",
+      "invalid_auth": "Invalid token"
+    },
+    "abort": {
+      "already_configured": "This gateway is already configured"
+    }
+  }
+}

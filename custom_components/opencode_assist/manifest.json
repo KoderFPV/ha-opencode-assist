@@ -1,0 +1,13 @@
+{
+  "domain": "opencode_assist",
+  "name": "OpenCode Assist",
+  "codeowners": ["@KoderFPV"],
+  "config_flow": true,
+  "dependencies": ["conversation"],
+  "documentation": "https://github.com/KoderFPV/ha-opencode-assist",
+  "integration_type": "service",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/KoderFPV/ha-opencode-assist/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
