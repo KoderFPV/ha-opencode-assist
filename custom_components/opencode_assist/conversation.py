@@ -9,9 +9,10 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import MATCH_ALL
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
-from .const import CONF_TOKEN, CONF_URL, TURN_TIMEOUT
+from .const import CONF_TOKEN, CONF_URL, DOMAIN, TURN_TIMEOUT
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -32,6 +33,11 @@ class OpenCodeConversationEntity(conversation.ConversationEntity):
     def __init__(self, entry: ConfigEntry) -> None:
         self._entry = entry
         self._attr_unique_id = entry.entry_id
+        self._attr_device_info = DeviceInfo(
+            identifiers={(DOMAIN, entry.entry_id)},
+            name=entry.title,
+            entry_type=DeviceEntryType.SERVICE,
+        )
         # Home Assistant conversation id -> OpenCode session id. Lost on
         # restart, which only starts a fresh conversation.
         self._sessions: dict[str, str] = {}
